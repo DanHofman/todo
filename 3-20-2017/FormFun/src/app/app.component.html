@@ -1,0 +1,45 @@
+<div class="container-fluid form">
+  <form 
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form.value)"
+    class="form-inline">
+    <div class="row">
+      <div class="col-md-12">    
+        <div class="form-group">
+          <label for="exampleInputName2">
+            First Name</label>
+          <input type="text" class="form-control" id="exampleInputName2" placeholder="First Name" formControlName="firstName">
+          <p *ngIf="form.controls.firstName.errors?.invalid" class="error">
+            Invalid charactors " <strong>{{form.controls.firstName.errors?.invalid.char}}</strong> "
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail2">Last Name</label>
+          <input type="Last Name" class="form-control" id="exampleInputEmail2" placeholder="Last Name" formControlName="lastName">
+          <p *ngIf="form.controls.lastName.errors?.invalid" class="error">
+            Invalid charactors " <strong>{{form.controls.lastName.errors?.invalid.char}}</strong> "
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <br>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="exampleInputName2">Sex</label>
+        <input type="text" class="form-control" id="exampleInputName2" placeholder="m/f" formControlName="sex">
+        <p *ngIf="form.controls.sex.errors" class="error">Please choose a real sex</p>
+        <div class="form-group">
+          <label for="exampleInputEmail2">DOB</label>
+          <input type="text" class="form-control" placeholder="mm/dd/yy" formControlName="Dob">
+          <p *ngIf="form.controls.Dob.errors?.pattern" class="error">mm/dd/yyyy</p>
+          <p *ngIf="form.controls.Dob.errors?.Dob" class="error">Please enter valid date</p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <button type="submit" [disabled]="!form.valid" class="btn btn-primary center-block">Submit</button>
+  </form>
+</div>
+

@@ -1,0 +1,16 @@
+.form {
+    Margin: 5%;
+    padding: 5%;
+    box-shadow: 1px 1px 1px grey;
+    background: antiquewhite;
+}
+input {
+    background: white;
+}
+.space {
+    height: 10px;
+}
+.error {
+    color: darkred;
+    display: inline-block;
+}

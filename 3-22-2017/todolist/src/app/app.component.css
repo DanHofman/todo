@@ -68,8 +68,10 @@
     border-radius: 5px;
     color: black;
 }
-
+.nonimportance {
+    opacity: 0.25;
+}
 #entire-page {
-
       height: 100vh;
 }
+

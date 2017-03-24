@@ -11,10 +11,13 @@
                                 <p *ngIf="to.importance == 'high'" class="todo-item highimportance">{{to.name}} should be done {{to.time}}</p>
                                 <p *ngIf="to.importance == 'medium'" class="todo-item mediumimportance">{{to.name}} should be done {{to.time}}</p>
                                 <p *ngIf="to.importance == 'meh'" class="todo-item mehimportance">{{to.name}} should be done {{to.time}}</p>
+                                <div *ngIf="to.importance == 'non'" class="todo-item nonimportance"><p>{{to.name}} has been Completed!!</p></div>
+<!--                                
+                                *ngIf="to.importance == 'non'" class="todo-item nonimportance">{{to.name}} has been Completed!!</p>-->
                             </div>
                     </label>
                     <button class="btn btn-warning chkbx" (click)="onDelete(to.id)">delete</button> 
-                    <button class="btn btn-info chkbx" >completed</button>
+                    <button class="btn btn-info chkbx" (click)="onCompleted(to.id)" >completed</button>
                 </div>
             </div>
         </div>

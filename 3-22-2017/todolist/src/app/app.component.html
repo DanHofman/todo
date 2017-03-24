@@ -7,7 +7,8 @@
                     ToDo <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h1>
                 <div class="checkboxes" *ngFor="let to of todo">
                     <label>
-                        <input type="checkbox" id="{{to.id}}checker"  name="ChecklistItem{{to.name}}" value={{to.name}}>
+                        <input *ngIf="to.importance != 'non'" type="checkbox" id="{{to.id}}checker"  name="ChecklistItem{{to.name}}" value={{to.name}}>
+                        <span *ngIf="to.importance == 'non'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                             <div class="displayed-info">
                                 <p *ngIf="to.importance == 'high'" class="todo-item highimportance">{{to.name}} should be done {{to.time}}</p>
                                 <p *ngIf="to.importance == 'medium'" class="todo-item mediumimportance">{{to.name}} should be done {{to.time}}</p>

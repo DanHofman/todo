@@ -2,33 +2,74 @@
     margin: 5% 20% 5% 20%;
     padding: 5%;
     box-shadow: 2px 2px 2px grey;
-    border-radius: 5%;
-    background-color: #CC8B22;
+    /*border-radius: 5%;*/
+    background-color: white;
+    position: relative;
+    font-family:  'Droid Sans', sans-serif;
+}
+.further {
+    background-color: transparent
+}
+
+#addtodo {
     position: relative;
 }
 #header {
     text-align: center;
-    background: #4D66FF;
+    background: #4B5E61;
     color: white;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     box-shadow: 1px 1px 1px grey;
 }
 .chkbx {
     float: right;
+    background-color: white;
+    color: black;
+    box-shadow: 1px 1px 1px black;
 }
 .checkboxes {
     background: #DADAD5;
-    padding: 5%;
-    border-radius: 5px;
+    padding: 1%;
+    padding-bottom: 0px;
+    /*border-radius: 5px;*/
     color: black;
     box-shadow: 1px 1px 1px grey;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Droid Sans', sans-serif;
     font-size: 20px;
     overflow: auto;
     margin: 10px 0px 10px 0px;
 }
 
 .formy {
-   position: absolute;
+   position: fixed;
    bottom: 5px;
+   left: 5px;
+}
+.displayed-info {
+    margin-top: 2%;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.highimportance {
+    background-color: crimson;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.mediumimportance {
+    background-color: darkgreen;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.mehimportance {
+    background-color: transparent;
+    border-radius: 5px;
+    color: black;
+}
+
+#entire-page {
+
+      height: 100vh;
 }

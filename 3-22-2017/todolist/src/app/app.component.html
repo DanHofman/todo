@@ -1,37 +1,63 @@
-<div class="container-fluid main">
-    <div class="row">
-        <div class="col-md-12 checks">
-            <h1 id="header">To do</h1>
-            <div class="checkboxes" *ngFor="let to of todo">
-                <label>
-                    <input type="checkbox" name="ChecklistItem{{to.name}}" value={{to.name}}>{{to.name}}
-                </label>
-                <button class="btn btn-danger chkbx">delete</button> 
-                <button class="btn btn-primary chkbx">completed!</button>
+
+<div class="further">
+    <div class="container-fluid main" >
+        <div class="row checkbox-row">
+            <div class="col-md-12 checks">
+                <h1 id="header">ToDo</h1>
+                <div class="checkboxes" *ngFor="let to of todo">
+                    <label>
+                        <input type="checkbox" id="{{to.id}}checker"  name="ChecklistItem{{to.name}}" value={{to.name}}>
+                            <div class="displayed-info">
+                                <p *ngIf="to.importance == 'high'" class="todo-item highimportance">{{to.name}} should be done {{to.time}}</p>
+                                <p *ngIf="to.importance == 'medium'" class="todo-item mediumimportance">{{to.name}} should be done {{to.time}}</p>
+                                <p *ngIf="to.importance == 'meh'" class="todo-item mehimportance">{{to.name}} should be done {{to.time}}</p>
+                            </div>
+                    </label>
+                    <button class="btn btn-warning chkbx" (click)="onDelete(to.id)">delete</button> 
+                    <button class="btn btn-info chkbx" >completed</button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12 formy">
-            <form 
-            [formGroup]="formed" 
-            (ngSubmit)="onSubmit(formed.value)"
-            class="form-inline">
-                <div class="form-group">
-                    <label class="sr-only" for="newCheckboxname">Name</label>
-                    <input type="text" class="form-control" id="newCheckboxname" placeholder="next todo" formControlName="name">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="newCheckboxdate">Password</label>
-                    <input type="text" class="form-control" id="newCheckboxdate" placeholder="due when?" formControlName="time">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="newCheckboximport">Password</label>
-                    <input type="text" class="form-control" id="newCheckboximport" placeholder="how important?" formControlName="importance">
-                </div>
-                <button class="form-group" [disabled]="!formed.valid" type="submit" class="btn btn-success">Add new todo</button>
-            </form>
+    <div id="addtodo">
+        <div class="row">
+            <div class="col-md-12 formy">
+                <form 
+                [formGroup]="formed" 
+                (ngSubmit)="onSubmit(formed.value)"
+                class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="newCheckboxname">Name</label>
+                        <input type="text" class="form-control" id="newCheckboxname" placeholder="next todo" formControlName="name" value="">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="newCheckboxdate"></label>
+                        <input type="text" class="form-control" id="newCheckboxdate" placeholder="due when?" formControlName="time" value="">
+                    </div>
+                    <div class="form-group" >
+                        <select ng-init="high" class="form-control" id="newCheckboximport" placeholder="importance" formControlName="importance" value="medium">
+                            <option>high</option>
+                            <option>medium</option>
+                            <option>meh</option>
+                        </select>
+                        <!--<div class="dropup" dropdown >
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                Dropup
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" >
+                                <li><a href="#">high</a></li>
+                                <li><a href="#">medium</a></li>
+                                <li><a href="#">meh</a></li>
+                            </ul>
+                        </div>                   -->
+                        <!--<input type="text" class="form-control" id="newCheckboximport" placeholder="how important?" formControlName="importance" value="">-->
+                    </div>
+                    <button class="form-group" [disabled]="!formed.valid" type="submit" class="btn btn-success">Add new todo</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-    
+
+        

@@ -10,14 +10,26 @@
 .further {
     background-color: transparent
 }
-
+.complete-button-non {
+    opacity: 0.25;
+}
+.complete-button-non, .complete-button-non {
+    float: right;
+}
 #addtodo {
     position: relative;
+}
+.glyphicon-ok {
+    color: #1FBA5A;
+}
+.glyphicon-remove {
+    color: red;
 }
 #header {
     text-align: center;
     background: #4B5E61;
     color: white;
+    padding: 2%;
     /*border-radius: 5px;*/
     box-shadow: 1px 1px 1px grey;
 }

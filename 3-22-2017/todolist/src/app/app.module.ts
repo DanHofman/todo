@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {TodoService } from './todo.service';
+import { TooltipModule } from 'ng2-bootstrap';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {TodoService } from './todo.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TooltipModule.forRoot()
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]

@@ -23,7 +23,6 @@ export class TodoService {
     return this.todos;
   }
   reOrderTodosAfterSort(){
-    console.log("sorting");
     this.todos = this.sortTodo(this.todos);
     for(var i = 0; i < this.todos.length; i ++){
       this.todos[i].id = i;

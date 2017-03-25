@@ -1,8 +1,9 @@
 import { Component, OnInit  } from '@angular/core';
-import { TodoService } from './todo.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { TodoService } from './todo.service';
 import { Checklistitem } from './checklistitem';
-import {FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'td-root',

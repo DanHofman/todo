@@ -1,7 +1,6 @@
 .main {
     margin: 2% 20% 5% 20%;
-    padding: 3% 5% 3% 5%;
-
+    padding: 1% 4% 3% 5%;
     box-shadow: 2px 2px 2px grey;
     /*border-radius: 5%;*/
     background-color: white;
@@ -17,7 +16,7 @@
 .complete-button-non {
     opacity: 0.25;
 }
-.complete-button-non, .complete-button-non {
+.complete-button-non{
     float: right;
 }
 #addtodo {
@@ -42,6 +41,8 @@
 }
 .chkbx {
     float: right;
+    margin-top: 0.5%;
+    margin-right: 0.5%;
     background-color: white;
     color: black;
     box-shadow: 1px 1px 1px black;
@@ -87,9 +88,11 @@
     background-color: transparent;
     border-radius: 5px;
     color: black;
+    padding: 10px;
 }
 .nonimportance {
     opacity: 0.25;
+    padding: 3px;
 }
 #entire-page {
       height: 100vh;

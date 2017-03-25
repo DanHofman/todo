@@ -19,12 +19,12 @@ export class TodoService {
     this.reOrderTodosAfterSort();
   }
   getAllItems() {
+    this.reOrderTodosAfterSort();
     return this.todos;
   }
   reOrderTodosAfterSort(){
+    console.log("sorting");
     this.todos = this.sortTodo(this.todos);
-    console.log(this.todos);
-    console.log("during reorder");
     for(var i = 0; i < this.todos.length; i ++){
       this.todos[i].id = i;
     }

@@ -1,11 +1,15 @@
 .main {
-    margin: 5% 20% 5% 20%;
-    padding: 5%;
+    margin: 2% 20% 5% 20%;
+    padding: 3% 5% 3% 5%;
+
     box-shadow: 2px 2px 2px grey;
     /*border-radius: 5%;*/
     background-color: white;
     position: relative;
     font-family:  'Droid Sans', sans-serif;
+}
+#checkbox-label {
+    margin: 0px;
 }
 .further {
     background-color: transparent
@@ -18,6 +22,9 @@
 }
 #addtodo {
     position: relative;
+}
+.todo-item {
+    display:inline-block;
 }
 .glyphicon-ok {
     color: #1FBA5A;
@@ -41,8 +48,7 @@
 }
 .checkboxes {
     background: #DADAD5;
-    padding: 1%;
-    padding-bottom: 0px;
+    /*padding: 2%;*/
     /*border-radius: 5px;*/
     color: black;
     box-shadow: 1px 1px 1px grey;
@@ -51,16 +57,18 @@
     overflow: auto;
     margin: 10px 0px 10px 0px;
 }
+.checkbox-row {
 
+}
 .formy {
    position: fixed;
    bottom: 5px;
    left: 5px;
 }
 .displayed-info {
-    margin-top: 2%;
+    /*margin-top: 2%;*/
     padding-left: 10px;
-    display: inline-block;
+    max-height: 20%;
 }
 
 .highimportance {
@@ -87,3 +95,47 @@
       height: 100vh;
 }
 
+.importance-change {
+    /*margin: 1%;*/
+    padding: 0px;
+    /*display: inline-block;*/
+}
+
+#green-block {
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+#red-block {
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+#beige-block {
+    background-color: beige;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+.hider {
+    margin-top: 0px;
+    display: block;
+    margin-left: 3px;
+    background-color: transparent;
+    color: darkgreen;
+    border: none;
+}
+.hider:focus {
+    border: none;
+    outline: none;
+}
+.instruction {
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+.completed-task {
+    color: darkgreen;
+    /*display: block;*/
+}

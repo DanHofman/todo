@@ -1,26 +1,43 @@
 
 <div class="further">
+    <div class="importance-change instruction" #instruction>
+        <h5 style="display: inline-block; padding-bottom: 0.2%;">Change importance level, or re-assign a completed task, by pressing one of these colors.</h5>
+        <div id="red-block">
+        </div> 
+        <div id="green-block">
+        </div>
+        <div id="beige-block">
+        </div>
+    </div>
+    <button class="btn btn-primary hider" (click)="hideMessage(instruction)"><span id="arrow" class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>      
     <div class="container-fluid main" >
         <div class="row checkbox-row">
             <div class="col-md-12 checks">
                 <h1 id="header">
                     ToDo <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h1>
                 <div class="checkboxes" *ngFor="let to of todo">
-                    <label>
-                        <input *ngIf="to.importance != 'non'" type="checkbox" id="{{to.id}}checker"  name="ChecklistItem{{to.name}}" value={{to.name}}>
-                        <span *ngIf="to.importance == 'non'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <label id="checkbox-label">
+                        <!--<input *ngIf="to.importance != 'non'" type="checkbox" id="{{to.id}}checker"  name="ChecklistItem{{to.name}}" value={{to.name}}>-->
+                        <!--<span *ngIf="to.importance == 'non'" class="glyphicon glyphicon-ok completed-check" aria-hidden="true"></span>-->
                             <div class="displayed-info">
+                                <div class="importance-change">
+                                    <div id="red-block" (click)="changeToHigh(to.id)">
+                                    </div> 
+                                    <div id="green-block" (click)="changeToMed(to.id)">
+                                    </div>
+                                    <div id="beige-block" (click)="changeToMeh(to.id)">
+                                    </div>
+                                </div>                                 
                                 <p *ngIf="to.importance == 'high'" class="todo-item highimportance">{{to.name}} should be done {{to.time}}</p>
                                 <p *ngIf="to.importance == 'medium'" class="todo-item mediumimportance">{{to.name}} should be done {{to.time}}</p>
-                                <p *ngIf="to.importance == 'meh'" class="todo-item mehimportance">{{to.name}} should be done {{to.time}}</p>                    
-                                <div *ngIf="to.importance == 'non'" class="todo-item nonimportance"><p>{{to.name}} has been Completed!!</p></div>
-<!--                                
-                                *ngIf="to.importance == 'non'" class="todo-item nonimportance">{{to.name}} has been Completed!!</p>-->
+                                <p *ngIf="to.importance == 'meh'" class="todo-item mehimportance">{{to.name}} should be done {{to.time}}</p>     
+                                <span *ngIf="to.importance == 'non'" class="glyphicon glyphicon-ok completed-check" aria-hidden="true"></span>                 
+                                <div *ngIf="to.importance == 'non'" class="todo-item nonimportance"><p>{{to.name}} </p></div><span *ngIf="to.importance == 'non'" class="completed-task"> Completed!</span>
                             </div>
                     </label>
                     <button class="btn btn-warning chkbx" (click)="onDelete(to.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> 
                     <button *ngIf="to.importance != 'non'" class="btn btn-info chkbx" (click)="onCompleted(to.id)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                    <button *ngIf="to.importance == 'non'" class="btn btn-info chkbx" disabled="true" (click)="onCompleted(to.id)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                    <button *ngIf="to.importance == 'non'" class="btn btn-info chkbx" disabled="true" (click)="onCompleted(to.id)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>       
                 </div>
             </div>
         </div>

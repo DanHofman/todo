@@ -1,3 +1,26 @@
+/*Goes top to bottom of the app.component html file*/
+
+.further {
+    background-color: transparent
+}
+.instruction {
+    margin-bottom: 0px;
+    margin-left: 5px;
+    padding: 0px;
+    display: block;
+}
+.hider {
+    margin-top: 0px;
+    display: block;
+    margin-left: 3px;
+    background-color: transparent;
+    color: darkgreen;
+    border: none;
+}
+.hider:focus {
+    border: none;
+    outline: none;
+}
 .main {
     margin: 2% 20% 5% 20%;
     padding: 1% 4% 3% 5%;
@@ -7,30 +30,6 @@
     position: relative;
     font-family:  'Droid Sans', sans-serif;
 }
-#checkbox-label {
-    margin: 0px;
-}
-.further {
-    background-color: transparent
-}
-.complete-button-non {
-    opacity: 0.25;
-}
-.complete-button-non{
-    float: right;
-}
-#addtodo {
-    position: relative;
-}
-.todo-item {
-    display:inline-block;
-}
-.glyphicon-ok {
-    color: #1FBA5A;
-}
-.glyphicon-remove {
-    color: red;
-}
 #header {
     text-align: center;
     background: #4B5E61;
@@ -38,14 +37,6 @@
     padding: 2%;
     /*border-radius: 5px;*/
     box-shadow: 1px 1px 1px grey;
-}
-.chkbx {
-    float: right;
-    margin-top: 0.5%;
-    margin-right: 0.5%;
-    background-color: white;
-    color: black;
-    box-shadow: 1px 1px 1px black;
 }
 .checkboxes {
     background: #DADAD5;
@@ -58,52 +49,20 @@
     overflow: auto;
     margin: 10px 0px 10px 0px;
 }
-.checkbox-row {
-
-}
-.formy {
-   position: fixed;
-   bottom: 5px;
-   left: 5px;
+#checkbox-label {
+    margin: 0px;
 }
 .displayed-info {
     /*margin-top: 2%;*/
     padding-left: 10px;
     max-height: 20%;
 }
-
-.highimportance {
-    background-color: crimson;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-}
-.mediumimportance {
-    background-color: darkgreen;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-}
-.mehimportance {
-    background-color: transparent;
-    border-radius: 5px;
-    color: black;
-    padding: 10px;
-}
-.nonimportance {
-    opacity: 0.25;
-    padding: 3px;
-}
-#entire-page {
-      height: 100vh;
-}
-
 .importance-change {
     /*margin: 1%;*/
     padding: 0px;
-    /*display: inline-block;*/
+    /*display: block;*/
+    max-width: 43px;
 }
-
 #green-block {
     background-color: green;
     width: 10px;
@@ -122,23 +81,66 @@
     height: 10px;
     display: inline-block;
 }
-.hider {
-    margin-top: 0px;
-    display: block;
-    margin-left: 3px;
+.highimportance {
+    background-color: crimson;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.mediumimportance {
+    background-color: darkgreen;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.mehimportance {
     background-color: transparent;
-    color: darkgreen;
-    border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
 }
-.hider:focus {
-    border: none;
-    outline: none;
+.todo-item {
+    display:inline-block;
 }
-.instruction {
-    margin-bottom: 0px;
-    margin-left: 5px;
+.nonimportance {
+    opacity: 0.25;
+    padding: 3px;
 }
 .completed-task {
     color: darkgreen;
     /*display: block;*/
 }
+.chkbx {
+    float: right;
+    margin-top: 0.5%;
+    margin-right: 0.5%;
+    background-color: white;
+    color: black;
+    box-shadow: 1px 1px 1px black;
+}
+.glyphicon-ok {
+    color: #1FBA5A;
+}
+.glyphicon-remove {
+    color: red;
+}
+#addtodo {
+    position: relative;
+}
+.formy {
+   position: fixed;
+   bottom: 5px;
+   left: 5px;
+}
+
+/* These I'm not sure what these are for*/
+.complete-button-non{
+    float: right;
+    opacity: 0.25;
+}
+#entire-page {
+      height: 100vh;
+}
+/*fin*/
+
+

@@ -2,11 +2,10 @@ import { Checklistitem } from './checklistitem'
 
 export class TodoService {
   private todos: Checklistitem[] = [];
-  private types: string[] = [
-    "Work",
-    "Projects",
-    "Personal"
-  ];
+
+  initializeTodoItems(todos: Checklistitem[]) {
+    this.todos = todos;
+  }
 
   getChecklistItem(id: number){
     return this.todos[id];

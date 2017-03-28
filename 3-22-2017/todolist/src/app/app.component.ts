@@ -12,7 +12,9 @@ import { Checklistitem } from './checklistitem';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  todo: Checklistitem[];
   private activeType = 'All';
+  private storedToDos: Checklistitem[] = [];
   private hidden = false;
   private formed;
   private importance = [
@@ -25,8 +27,7 @@ export class AppComponent implements OnInit {
     "Work",
     "Personal"
   ];
-
-  todo: Checklistitem[];
+  
   constructor(private todoservice: TodoService, private TodoDbService: PullTodoService) {
     this.todo = this.todoservice.getAllItems();
   }
@@ -38,12 +39,26 @@ export class AppComponent implements OnInit {
       importance: new FormControl('high'),
       type: new FormControl('Projects')
     });
+    this.getTodosFromDb("All");
+  }
+  ngAfterViewChecked(){
 
+    this.todoservice.initializeTodoItems(this.todo);
+    this.todoservice.getAllItems();
+  }
+    
     // this.todoservice.addCheckListItem(new Checklistitem("this is completed", "soon", "non", 0))
     // this.todoservice.addCheckListItem(new Checklistitem("this is very important", "now", "high", 0))
     // this.todoservice.addCheckListItem(new Checklistitem("this is somewhat important", "soon", "medium", 0))
     // this.todoservice.addCheckListItem(new Checklistitem("this isn't important", "whenever", "meh", 0))
     // this.todo = this.todoservice.getAllItems();
+  
+  getNamesOfChecklistItems(todos: Checklistitem[]){
+    var names: string[] = []
+    for(var check in todos){
+      names.push(todos[check].name);
+    }
+    return names;
   }
 
   onDelete(id){
@@ -92,13 +107,31 @@ export class AppComponent implements OnInit {
     }
   }
   addTodosToDb() {
-    this.TodoDbService.replaceTodos(this.todo)
-      .subscribe(
-        (response) => console.log(response),
-        (error) => console.log(error)
+    if(this.activeType == "All"){
+      this.TodoDbService.replaceTodos(this.todo)
+        .subscribe(
+          (response) => console.log(response),
+          (error) => console.log(error)
+        );
+    } else {
+      var newChecklistItems: Checklistitem[] = [];
+      for(var to in this.todo){
+        if(this.getNamesOfChecklistItems(this.storedToDos).indexOf(this.todo[to].name) == -1){
+          this.storedToDos.push(this.todo[to]);
+        }
+      }
+      this.TodoDbService.replaceTodos(this.storedToDos)
+        .subscribe(
+          (response) => console.log(response),
+          (error) => console.log(error)
       );
+    }
   }
+  
   getTodosFromDb(type: string) {
+    if(this.activeType == "All"){
+      this.storedToDos = this.todo;
+    }
     this.activeType = type;
     this.TodoDbService.getTodos()
     .subscribe(

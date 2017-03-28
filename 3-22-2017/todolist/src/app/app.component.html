@@ -28,9 +28,9 @@
                                     <div id="beige-block" (click)="changeToMeh(to.id)">
                                     </div>
                                 </div>                                 
-                                <p *ngIf="to.importance == 'high'" class="todo-item highimportance">{{to.name}} should be done {{to.time}}</p>
-                                <p *ngIf="to.importance == 'medium'" class="todo-item mediumimportance">{{to.name}} should be done {{to.time}}</p>
-                                <p *ngIf="to.importance == 'meh'" class="todo-item mehimportance">{{to.name}} should be done {{to.time}}</p>     
+                                <p *ngIf="to.importance == 'high'" class="todo-item highimportance">{{to.name}} should be done {{to.time}} type: {{to.type}}</p>
+                                <p *ngIf="to.importance == 'medium'" class="todo-item mediumimportance">{{to.name}} should be done {{to.time}} type: {{to.type}}</p>
+                                <p *ngIf="to.importance == 'meh'" class="todo-item mehimportance">{{to.name}} should be done {{to.time}} type: {{to.type}}</p>     
                                 <span *ngIf="to.importance == 'non'" class="glyphicon glyphicon-ok completed-check" aria-hidden="true"></span>                 
                                 <div *ngIf="to.importance == 'non'" class="todo-item nonimportance"><p>{{to.name}} </p></div><span *ngIf="to.importance == 'non'" class="completed-task"> Completed!</span>
                             </div>
@@ -67,9 +67,8 @@
                     </div>
                     <button class="form-group" [disabled]="!formed.valid" type="submit" class="btn btn-success">Add new todo</button>
                 </form>
-                <br>
-                <button class="btn btn-primary" (click)="addTodosToDb()">Save ToDos</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Get ToDos</button>
+                <button class="btn btn-primary saveBtn" (click)="addTodosToDb()">Save ToDos</button>
+                <button type="button" class="btn btn-primary getBtn" data-toggle="modal" data-target=".bs-example-modal-sm">Get ToDos</button>
                 <div style="background-color: rgba(0, 0, 0, 0.5);" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='false'>
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">

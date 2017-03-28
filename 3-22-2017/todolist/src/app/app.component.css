@@ -154,3 +154,7 @@
 .left-most {
     margin-left: 2.5%;
 }
+
+.saveBtn, .getBtn {
+    margin-top: 5px;
+}

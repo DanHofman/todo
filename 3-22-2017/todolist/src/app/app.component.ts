@@ -12,7 +12,7 @@ import { Checklistitem } from './checklistitem';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  todo: Checklistitem[];
+  todo: Checklistitem[] = [];
   private activeType = 'All';
   private storedToDos: Checklistitem[] = [];
   private hidden = false;
@@ -29,7 +29,10 @@ export class AppComponent implements OnInit {
   ];
   
   constructor(private todoservice: TodoService, private TodoDbService: PullTodoService) {
+    console.log("constructor");
     this.todo = this.todoservice.getAllItems();
+    this.todoservice.initializeTodoItems(this.todo);
+    this.todoservice.getAllItems();
   }
 
   ngOnInit(){
@@ -41,12 +44,7 @@ export class AppComponent implements OnInit {
     });
     this.getTodosFromDb("All");
   }
-  ngAfterViewChecked(){
 
-    this.todoservice.initializeTodoItems(this.todo);
-    this.todoservice.getAllItems();
-  }
-    
     // this.todoservice.addCheckListItem(new Checklistitem("this is completed", "soon", "non", 0))
     // this.todoservice.addCheckListItem(new Checklistitem("this is very important", "now", "high", 0))
     // this.todoservice.addCheckListItem(new Checklistitem("this is somewhat important", "soon", "medium", 0))

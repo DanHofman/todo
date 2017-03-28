@@ -4,7 +4,9 @@ export class TodoService {
   private todos: Checklistitem[] = [];
 
   initializeTodoItems(todos: Checklistitem[]) {
+    console.log("initializing" + " " + todos + " " + this.todos);
     this.todos = todos;
+    console.log(todos);
   }
 
   getChecklistItem(id: number){

@@ -7,7 +7,7 @@
     margin-bottom: 0px;
     margin-left: 5px;
     padding: 0px;
-    display: block;
+    display: inline-block;
 }
 .hider {
     margin-top: 0px;
@@ -20,6 +20,10 @@
 .hider:focus {
     border: none;
     outline: none;
+}
+.print-btn {
+    margin: 2px 2px 0px 0px;
+    float: right;
 }
 .main {
     margin: 2% 20% 5% 20%;
@@ -142,5 +146,11 @@
       height: 100vh;
 }
 /*fin*/
-
-
+.modal-btn {
+    min-height: 25px;
+    min-width: 50px;
+    margin: 10px 1px 10px 1px;
+}
+.left-most {
+    margin-left: 2.5%;
+}

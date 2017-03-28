@@ -2,6 +2,7 @@ import { Component, OnInit  } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { TodoService } from './todo.service';
+import { PullTodoService } from './pull-todo.service';
 import { Checklistitem } from './checklistitem';
 
 
@@ -11,12 +12,22 @@ import { Checklistitem } from './checklistitem';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  hidden = false;
-  formed;
-  importance = ["high", "medium", "meh", "non"];
+  private activeType = 'All';
+  private hidden = false;
+  private formed;
+  private importance = [
+    "high",
+    "medium",
+    "meh",
+     ];
+  private types: string[] = [
+    "Projects",
+    "Work",
+    "Personal"
+  ];
 
   todo: Checklistitem[];
-  constructor(private todoservice: TodoService) {
+  constructor(private todoservice: TodoService, private TodoDbService: PullTodoService) {
     this.todo = this.todoservice.getAllItems();
   }
 
@@ -24,14 +35,15 @@ export class AppComponent implements OnInit {
     this.formed = new FormGroup({
       name: new FormControl('', Validators.required),
       time: new FormControl('', Validators.required),
-      importance: new FormControl('', Validators.required)
+      importance: new FormControl('high'),
+      type: new FormControl('Projects')
     });
 
-    this.todoservice.addCheckListItem(new Checklistitem("this is completed", "soon", "non", 0))
-    this.todoservice.addCheckListItem(new Checklistitem("this is very important", "now", "high", 0))
-    this.todoservice.addCheckListItem(new Checklistitem("this is somewhat important", "soon", "medium", 0))
-    this.todoservice.addCheckListItem(new Checklistitem("this isn't important", "whenever", "meh", 0))
-    this.todo = this.todoservice.getAllItems();
+    // this.todoservice.addCheckListItem(new Checklistitem("this is completed", "soon", "non", 0))
+    // this.todoservice.addCheckListItem(new Checklistitem("this is very important", "now", "high", 0))
+    // this.todoservice.addCheckListItem(new Checklistitem("this is somewhat important", "soon", "medium", 0))
+    // this.todoservice.addCheckListItem(new Checklistitem("this isn't important", "whenever", "meh", 0))
+    // this.todo = this.todoservice.getAllItems();
   }
 
   onDelete(id){
@@ -44,6 +56,7 @@ export class AppComponent implements OnInit {
   }
   onSubmit(newtodo){
    let newChecklistItem: Checklistitem = new Checklistitem(newtodo.name, newtodo.time, newtodo.importance, this.todoservice.getLength());
+   newChecklistItem.type = newtodo.type;
    this.todoservice.addCheckListItem(newChecklistItem);
    this.todo = this.todoservice.getAllItems();
    this.formed.reset();
@@ -77,5 +90,58 @@ export class AppComponent implements OnInit {
       arrow.className = "glyphicon glyphicon-chevron-down";
       arrow.style.opacity = "0.43";
     }
+  }
+  addTodosToDb() {
+    this.TodoDbService.replaceTodos(this.todo)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      );
+  }
+  getTodosFromDb(type: string) {
+    this.activeType = type;
+    this.TodoDbService.getTodos()
+    .subscribe(
+      (data) => {
+        var next = this.filterForType(type, data.json());
+        this.todo = next;
+      },
+      (error) => console.log(error)
+    )
+  }
+  filterForType(type: string, data: Checklistitem[]){
+    var final: Checklistitem[] = [];
+    if(type == "All"){
+      return data;
+    }
+    for(var i = 0; i < data.length; i++){
+      if(data[i].type == type){
+        final.push(data[i]);
+      }
+    }
+    return final;
+  }
+  print(): void {
+    let printContents, popupWin;
+    printContents = document.getElementById('main-todo').innerHTML;
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>ToDo</title>
+          <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" >
+          <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+          <link rel="stylesheet" href="src/app/app.component.css">
+          <style>
+            .btn {
+              display: none;
+            }
+          </style>   
+        </head>
+    <body onload="window.print();window.close()">${printContents}</body>
+      </html>`
+    );
+    popupWin.document.close();
   }
 }

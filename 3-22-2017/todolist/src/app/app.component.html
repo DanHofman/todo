@@ -8,8 +8,9 @@
         <div id="beige-block">
         </div>
     </div>
-    <button class="btn btn-primary hider" (click)="hideMessage(instruction)"><span id="arrow" class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>      
-    <div class="container-fluid main" >
+    <button class="btn btn-success print-btn" id="print-b" (click)="print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></button>
+    <button class="btn btn-primary hider" (click)="hideMessage(instruction)"><span id="arrow" class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>     
+    <div class="container-fluid main" id="main-todo">
         <div class="row checkbox-row">
             <div class="col-md-12 checks">
                 <h1 id="header">
@@ -57,29 +58,30 @@
                         <input type="text" class="form-control" id="newCheckboxdate" placeholder="due when?" formControlName="time" value="">
                     </div>
                     <div class="form-group" >
-                        <select ng-init="high" class="form-control" id="newCheckboximport" placeholder="importance" formControlName="importance" value="medium">
-                            <option>high</option>
-                            <option>medium</option>
-                            <option>meh</option>
+                        <select ng-init="medium" class="form-control" id="newCheckboximport" placeholder="importance" formControlName="importance" value="">
+                            <option *ngFor="let import of importance">{{import}}</option>
                         </select>
-                        <!--<div class="dropup" dropdown >
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                                Dropup
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" >
-                                <li><a href="#">high</a></li>
-                                <li><a href="#">medium</a></li>
-                                <li><a href="#">meh</a></li>
-                            </ul>
-                        </div>                   -->
-                        <!--<input type="text" class="form-control" id="newCheckboximport" placeholder="how important?" formControlName="importance" value="">-->
+                        <select ng-init="Projects" class="form-control" placeholder="type" formControlName="type" value="">
+                            <option *ngFor="let type of types">{{type}}</option>
+                        </select>
                     </div>
                     <button class="form-group" [disabled]="!formed.valid" type="submit" class="btn btn-success">Add new todo</button>
                 </form>
+                <br>
+                <button class="btn btn-primary" (click)="addTodosToDb()">Save ToDos</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Get ToDos</button>
+                <div style="background-color: rgba(0, 0, 0, 0.5);" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='false'>
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <button class="btn btn-primary modal-btn left-most" data-dismiss="modal"(click)="getTodosFromDb('All')">All</button>
+                            <button class="btn btn-primary modal-btn" data-dismiss="modal"(click)="getTodosFromDb('Work')">Work</button>
+                            <button class="btn btn-primary modal-btn" data-dismiss="modal"(click)="getTodosFromDb('Projects')">Projects</button>
+                            <button class="btn btn-primary modal-btn" data-dismiss="modal"(click)="getTodosFromDb('Personal')">Personal</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-        
+  

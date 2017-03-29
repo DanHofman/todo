@@ -1,0 +1,164 @@
+/*Goes top to bottom of the app.component html file*/
+
+.further {
+    background-color: transparent
+}
+.instruction {
+    margin-bottom: 0px;
+    margin-left: 5px;
+    padding: 0px;
+    display: inline-block;
+}
+.hider {
+    margin-top: 0px;
+    display: block;
+    margin-left: 3px;
+    background-color: transparent;
+    color: darkgreen;
+    border: none;
+}
+.hider:focus {
+    border: none;
+    outline: none;
+}
+.print-btn {
+    margin: 2px 2px 0px 0px;
+    float: right;
+}
+.main {
+    margin: 1% 20% 5% 20%;
+    padding: 1% 4% 3% 5%;
+    box-shadow: 2px 2px 2px grey;
+    /*border-radius: 5%;*/
+    background-color: white;
+    position: relative;
+    font-family:  'Droid Sans', sans-serif;
+}
+#header {
+    text-align: center;
+    background: #4B5E61;
+    color: white;
+    padding: 2% 2% 0px 2%;
+    /*border-radius: 5px;*/
+    box-shadow: 1px 1px 1px grey;
+}
+#header h3{
+    padding-bottom: 2%;
+    margin-top: 2%; 
+}
+.checkboxes {
+    background: #DADAD5;
+    /*padding: 2%;*/
+    /*border-radius: 5px;*/
+    color: black;
+    box-shadow: 1px 1px 1px grey;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 20px;
+    overflow: auto;
+    margin: 10px 0px 10px 0px;
+}
+#checkbox-label {
+    margin: 0px;
+}
+.displayed-info {
+    /*margin-top: 2%;*/
+    padding-left: 10px;
+    max-height: 20%;
+}
+.importance-change {
+    /*margin: 1%;*/
+    padding: 0px;
+    /*display: block;*/
+    max-width: 43px;
+}
+#green-block {
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+#red-block {
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+#beige-block {
+    background-color: beige;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+.highimportance {
+    background-color: crimson;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.mediumimportance {
+    background-color: darkgreen;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.mehimportance {
+    background-color: transparent;
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
+}
+.todo-item {
+    display:inline-block;
+}
+.nonimportance {
+    opacity: 0.25;
+    padding: 3px;
+}
+.completed-task {
+    color: darkgreen;
+    /*display: block;*/
+}
+.chkbx {
+    float: right;
+    margin-top: 0.5%;
+    margin-right: 0.5%;
+    background-color: white;
+    color: black;
+    box-shadow: 1px 1px 1px black;
+}
+.glyphicon-ok {
+    color: #1FBA5A;
+}
+.glyphicon-remove {
+    color: red;
+}
+#addtodo {
+    position: relative;
+}
+.formy {
+   position: fixed;
+   bottom: 5px;
+   left: 5px;
+}
+
+/* These I'm not sure what these are for*/
+.complete-button-non{
+    float: right;
+    opacity: 0.25;
+}
+#entire-page {
+      height: 100vh;
+}
+/*fin*/
+.modal-btn {
+    min-height: 25px;
+    min-width: 50px;
+    margin: 10px 1px 10px 1px;
+}
+.left-most {
+    margin-left: 2.5%;
+}
+
+.saveBtn, .getBtn, .loadAll {
+    margin-top: 5px;
+}

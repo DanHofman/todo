@@ -1,0 +1,87 @@
+<div class="further">
+    <div class="instruction" #instruction>
+        <h5 style="display: inline-block; padding-bottom: 0.2%;">Change importance level, or re-assign a completed task, by pressing one of these colors.</h5>
+        <div id="red-block">
+        </div> 
+        <div id="green-block">
+        </div>
+        <div id="beige-block">
+        </div>
+    </div>
+    <button class="btn btn-success print-btn" id="print-b" (click)="print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></button>
+    <button class="btn btn-primary hider" (click)="hideMessage(instruction)"><span id="arrow" class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>     
+    <div class="container-fluid main" id="main-todo">
+        <div class="row checkbox-row">
+            <div class="col-md-12 checks">
+                <h1 id="header">
+                    ToDo <span class="glyphicon glyphicon-ok" aria-hidden="true"></span><h3>{{activeType}} <span class="glyphicon glyphicon-list" aria-hidden="true"></span></h3></h1>
+                <div class="checkboxes" *ngFor="let to of todo">
+                    <label id="checkbox-label">
+                        <!--<input *ngIf="to.importance != 'non'" type="checkbox" id="{{to.id}}checker"  name="ChecklistItem{{to.name}}" value={{to.name}}>-->
+                        <!--<span *ngIf="to.importance == 'non'" class="glyphicon glyphicon-ok completed-check" aria-hidden="true"></span>-->
+                            <div class="displayed-info">
+                                <div class="importance-change">
+                                    <div id="red-block" (click)="changeToHigh(to.id)">
+                                    </div> 
+                                    <div id="green-block" (click)="changeToMed(to.id)">
+                                    </div>
+                                    <div id="beige-block" (click)="changeToMeh(to.id)">
+                                    </div>
+                                </div>                                 
+                                <p *ngIf="to.importance == 'high'" class="todo-item highimportance">{{to.name}} should be done {{to.time}} type: {{to.type}}</p>
+                                <p *ngIf="to.importance == 'medium'" class="todo-item mediumimportance">{{to.name}} should be done {{to.time}} type: {{to.type}}</p>
+                                <p *ngIf="to.importance == 'meh'" class="todo-item mehimportance">{{to.name}} should be done {{to.time}} type: {{to.type}}</p>     
+                                <span *ngIf="to.importance == 'non'" class="glyphicon glyphicon-ok completed-check" aria-hidden="true"></span>                 
+                                <div *ngIf="to.importance == 'non'" class="todo-item nonimportance"><p>{{to.name}} </p></div><span *ngIf="to.importance == 'non'" class="completed-task"> Completed!</span>
+                            </div>
+                    </label>
+                    <button class="btn btn-warning chkbx" (click)="onDelete(to.id)"  tooltip="delete" placement="top"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> 
+                    <button *ngIf="to.importance != 'non'" class="btn btn-info chkbx" (click)="onCompleted(to.id)" tooltip="complete this item" placement="top"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                    <button *ngIf="to.importance == 'non'" class="btn btn-info chkbx" disabled="true" (click)="onCompleted(to.id)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>       
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addtodo">
+        <div class="row">
+            <div class="col-md-12 formy">
+                <form 
+                [formGroup]="formed" 
+                (ngSubmit)="onSubmit(formed.value)"
+                class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="newCheckboxname">Name</label>
+                        <input type="text" class="form-control" id="newCheckboxname" placeholder="next todo" formControlName="name" value="">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="newCheckboxdate"></label>
+                        <input type="text" class="form-control" id="newCheckboxdate" placeholder="due when?" formControlName="time" value="">
+                    </div>
+                    <div class="form-group" >
+                        <select ng-init="medium" class="form-control" id="newCheckboximport" placeholder="importance" formControlName="importance" value="">
+                            <option *ngFor="let import of importance">{{import}}</option>
+                        </select>
+                        <select ng-init="Projects" class="form-control" placeholder="type" formControlName="type" value="">
+                            <option *ngFor="let type of types">{{type}}</option>
+                        </select>
+                    </div>
+                    <button class="form-group" [disabled]="!formed.valid" type="submit" class="btn btn-success">Add new todo</button>
+                </form>
+                <button class="btn btn-primary saveBtn" (click)="saveTodosToDb()">Save ToDos</button>
+                <button class="btn btn-primary loadAll" (click)="loadAllTodos()">Load ToDos</button>
+                <button type="button" class="btn btn-primary getBtn" data-toggle="modal" data-target=".bs-example-modal-sm">Filter ToDos</button>
+                <div style="background-color: rgba(0, 0, 0, 0.5);" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='false'>
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <button class="btn btn-primary modal-btn left-most" data-dismiss="modal"(click)="getTodosByType('All')">All</button>
+                            <button class="btn btn-primary modal-btn" data-dismiss="modal"(click)="getTodosByType('Work')">Work</button>
+                            <button class="btn btn-primary modal-btn" data-dismiss="modal"(click)="getTodosByType('Projects')">Projects</button>
+                            <button class="btn btn-primary modal-btn" data-dismiss="modal"(click)="getTodosByType('Personal')">Personal</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  

@@ -55,14 +55,13 @@ export class AppComponent implements OnInit {
     }
     return names;
   }
-
   onDelete(id){
     this.todoservice.removeCheckListItem(id);
-    this.todo = this.todoservice.getAllItems();
+    this.todo = this.todoservice.getToDoByType(this.activeType);
   }
   onCompleted(id){
     this.todoservice.completeCheckListItem(id);
-    this.todo = this.todoservice.getAllItems();
+    this.todo = this.todoservice.getToDoByType(this.activeType);
   }
   onSubmit(newtodo){
    let newChecklistItem: Checklistitem = new Checklistitem(newtodo.name, newtodo.time, newtodo.importance, this.todoservice.getLength());

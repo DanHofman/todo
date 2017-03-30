@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
     this.todo = this.todoservice.getToDoByType(this.activeType);
   }
   onSubmit(newtodo){
-   let newChecklistItem: Checklistitem = new Checklistitem(newtodo.name, newtodo.time, newtodo.importance, this.todoservice.getLength());
+   let newChecklistItem: Checklistitem = new Checklistitem(newtodo.name, newtodo.time, newtodo.importance, 0);
    newChecklistItem.type = newtodo.type;
    this.todoservice.addCheckListItem(newChecklistItem);
    this.getTodosByType(this.activeType);

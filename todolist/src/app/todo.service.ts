@@ -25,16 +25,23 @@ export class TodoService {
     this.reOrderTodosAfterSort();
   }
   getAllItems() {
+    this.getToDosFromDb()
     this.reOrderTodosAfterSort();
     return this.todos;
   }
   reOrderTodosAfterSort(){
+    if(this.todos == null){
+      return;
+    }
     this.todos = this.sortTodo(this.todos);
     for(var i = 0; i < this.todos.length; i ++){
       this.todos[i].id = i;
     }
   }
   sortTodo(todos) {
+    if(todos == null){
+      return;
+    }
     if(todos.length < 2){
       return todos;
     }
@@ -77,7 +84,7 @@ export class TodoService {
   getToDosFromDb() {
     this.pullTodoService.getTodos()
     .subscribe(
-      (data) => this.todos = data.json(),
+      (data) => this.todos = data.json() == null ? this.todos : data.json(),
       (error) => console.log(error)
     );
   }

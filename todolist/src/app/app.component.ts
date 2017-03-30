@@ -9,7 +9,7 @@ import { Checklistitem } from './checklistitem';
 @Component({
   selector: 'td-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   todo: Checklistitem[] = [];

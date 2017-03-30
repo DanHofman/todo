@@ -1,0 +1,86 @@
+.checkboxes {
+    background: #DADAD5;
+    /*padding: 2%;*/
+    /*border-radius: 5px;*/
+    color: black;
+    box-shadow: 1px 1px 1px grey;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 20px;
+    overflow: auto;
+    margin-top: 1%;
+}
+#checkbox-label {
+    margin: 0px;
+}
+.displayed-info {
+    /*margin-top: 2%;*/
+    padding-left: 10px;
+    max-height: 20%;
+}
+.importance-change {
+    /*margin: 1%;*/
+    padding: 0px;
+    /*display: block;*/
+    max-width: 43px;
+}
+#green-block {
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+#red-block {
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+#beige-block {
+    background-color: beige;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+.highimportance {
+    background-color: crimson;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.mediumimportance {
+    background-color: darkgreen;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.mehimportance {
+    background-color: transparent;
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
+}
+.todo-item {
+    display:inline-block;
+}
+.nonimportance {
+    opacity: 0.25;
+    padding: 3px;
+}
+.completed-task {
+    color: darkgreen;
+    /*display: block;*/
+}
+.chkbx {
+    float: right;
+    margin-top: 0.5%;
+    margin-right: 0.5%;
+    background-color: white;
+    color: black;
+    box-shadow: 1px 1px 1px black;
+}
+.glyphicon-ok {
+    color: #1FBA5A;
+}
+.glyphicon-remove {
+    color: red;
+}

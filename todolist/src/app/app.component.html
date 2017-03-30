@@ -15,30 +15,7 @@
             <div class="col-md-12 checks">
                 <h1 id="header">
                     ToDo <span class="glyphicon glyphicon-ok" aria-hidden="true"></span><h3>{{activeType}} <span class="glyphicon glyphicon-list" aria-hidden="true"></span></h3></h1>
-                <div class="checkboxes" *ngFor="let to of todo">
-                    <label id="checkbox-label">
-                        <!--<input *ngIf="to.importance != 'non'" type="checkbox" id="{{to.id}}checker"  name="ChecklistItem{{to.name}}" value={{to.name}}>-->
-                        <!--<span *ngIf="to.importance == 'non'" class="glyphicon glyphicon-ok completed-check" aria-hidden="true"></span>-->
-                            <div class="displayed-info">
-                                <div class="importance-change">
-                                    <div id="red-block" (click)="changeToHigh(to.id)">
-                                    </div> 
-                                    <div id="green-block" (click)="changeToMed(to.id)">
-                                    </div>
-                                    <div id="beige-block" (click)="changeToMeh(to.id)">
-                                    </div>
-                                </div>                                 
-                                <p *ngIf="to.importance == 'high'" class="todo-item highimportance">{{to.name}} should be done {{to.time}} type: {{to.type}}</p>
-                                <p *ngIf="to.importance == 'medium'" class="todo-item mediumimportance">{{to.name}} should be done {{to.time}} type: {{to.type}}</p>
-                                <p *ngIf="to.importance == 'meh'" class="todo-item mehimportance">{{to.name}} should be done {{to.time}} type: {{to.type}}</p>     
-                                <span *ngIf="to.importance == 'non'" class="glyphicon glyphicon-ok completed-check" aria-hidden="true"></span>                 
-                                <div *ngIf="to.importance == 'non'" class="todo-item nonimportance"><p>{{to.name}} </p></div><span *ngIf="to.importance == 'non'" class="completed-task"> Completed!</span>
-                            </div>
-                    </label>
-                    <button class="btn btn-warning chkbx" (click)="onDelete(to.id)"  tooltip="delete" placement="top"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> 
-                    <button *ngIf="to.importance != 'non'" class="btn btn-info chkbx" (click)="onCompleted(to.id)" tooltip="complete this item" placement="top"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                    <button *ngIf="to.importance == 'non'" class="btn btn-info chkbx" disabled="true" (click)="onCompleted(to.id)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>       
-                </div>
+                <td-todo-item id="individualTodo" *ngFor="let to of todo" [todoItem] ="to"></td-todo-item>          
             </div>
         </div>
     </div>

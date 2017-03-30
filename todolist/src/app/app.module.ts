@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import {TodoService } from './todo.service';
 import { TooltipModule } from 'ng2-bootstrap';
 import { PullTodoService } from './pull-todo.service';
+import { TodoItemComponent } from './todo-item/todo-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoItemComponent
   ],
   imports: [
     BrowserModule,

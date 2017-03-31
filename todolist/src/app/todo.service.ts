@@ -20,6 +20,10 @@ export class TodoService {
     this.todos.splice(id, 1);
     this.reOrderTodosAfterSort();
   }
+  changeImportance(id: number, importance: string){
+    this.todos[id].importance = importance;
+    this.reOrderTodosAfterSort();
+  }
   completeCheckListItem(id: number) {
     this.todos[id].importance = "non";
     this.reOrderTodosAfterSort();

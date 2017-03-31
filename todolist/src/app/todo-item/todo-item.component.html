@@ -1,12 +1,15 @@
-<div class="checkboxes">
+<div class="checkboxes" 
+    [@todoStatus]="todoStatus"
+    (mouseover)="toggleHighlighted(true)"
+    (mouseout)="toggleHighlighted(false)">
     <label id="checkbox-label">
       <div class="displayed-info">
           <div class="importance-change">
-              <div id="red-block" (click)="changeToHigh(todoItem.id)">
+              <div id="red-block" (click)="changeImportance(todoItem.id, 'high')">
               </div> 
-              <div id="green-block" (click)="changeToMed(todoItem.id)">
+              <div id="green-block" (click)="changeImportance(todoItem.id, 'medium')">
               </div>
-              <div id="beige-block" (click)="changeToMeh(todoItem.id)">
+              <div id="beige-block" (click)="changeImportance(todoItem.id, 'meh')">
               </div>
           </div>                                 
           <p *ngIf="todoItem.importance == 'high'" class="todo-item highimportance">{{todoItem.name}} should be done {{todoItem.time}} type: {{todoItem.type}}</p>

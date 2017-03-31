@@ -1,4 +1,4 @@
-<div class="further">
+<div class="further" >
     <div class="instruction" #instruction>
         <h5 style="display: inline-block; padding-bottom: 0.2%;">Change importance level, or re-assign a completed task, by pressing one of these colors.</h5>
         <div id="red-block">
@@ -14,8 +14,17 @@
         <div class="row checkbox-row">
             <div class="col-md-12 checks">
                 <h1 id="header">
-                    ToDo <span class="glyphicon glyphicon-ok" aria-hidden="true"></span><h3>{{activeType}} <span class="glyphicon glyphicon-list" aria-hidden="true"></span></h3></h1>
-                <td-todo-item id="individualTodo" *ngFor="let to of todo" [todoItem] ="to"></td-todo-item>          
+                    ToDo <span class="glyphicon glyphicon-ok" aria-hidden="true"></span><h3 (click)="ClickChangeType()">{{activeType}} <span class="glyphicon glyphicon-list" aria-hidden="true"></span></h3></h1>
+                <!--todo items-->
+                <td-todo-item 
+                        id="individualTodo" 
+                        *ngFor="let to of todo" 
+                        [todoItem] ="to"
+                        (delete)="onDelete($event)"
+                        (complete)="onCompleted($event)"
+                        (changeImport)="onChangeImportance($event)">
+                </td-todo-item>
+                <!---->
             </div>
         </div>
     </div>

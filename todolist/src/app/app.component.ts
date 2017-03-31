@@ -55,14 +55,6 @@ export class AppComponent implements OnInit {
     }
     return names;
   }
-  onDelete(id){
-    this.todoservice.removeCheckListItem(id);
-    this.todo = this.todoservice.getToDoByType(this.activeType);
-  }
-  onCompleted(id){
-    this.todoservice.completeCheckListItem(id);
-    this.todo = this.todoservice.getToDoByType(this.activeType);
-  }
   onSubmit(newtodo){
    let newChecklistItem: Checklistitem = new Checklistitem(newtodo.name, newtodo.time, newtodo.importance, 0);
    newChecklistItem.type = newtodo.type;
@@ -70,21 +62,7 @@ export class AppComponent implements OnInit {
    this.getTodosByType(this.activeType);
    this.formed.reset();
   }
-  changeToMed(id: number) {
-    this.todoservice.getChecklistItem(id).importance = "medium";
-    console.log(this.todoservice.getChecklistItem(id));
-    this.todo = this.todoservice.getAllItems();
-  }
-  changeToHigh(id: number) {
-    this.todoservice.getChecklistItem(id).importance = "high";
-    console.log(this.todoservice.getChecklistItem(id));
-    this.todo = this.todoservice.getAllItems();
-    }
-  changeToMeh(id: number) {
-    this.todoservice.getChecklistItem(id).importance = "meh";
-    console.log(this.todoservice.getChecklistItem(id));
-    this.todo = this.todoservice.getAllItems();
-  }
+
   hideMessage(element){
     if(this.hidden){
       element.style.display = "";
@@ -103,11 +81,36 @@ export class AppComponent implements OnInit {
   saveTodosToDb() {
     this.todoservice.saveToDosToDb()
   }
+  ClickChangeType() {
+    var nextType: string;
+    if(this.activeType == 'All'){
+      var nextType = 'Work';
+    } else if(this.activeType == 'Work'){
+      var nextType = 'Projects';
+    } else if(this.activeType == 'Projects'){
+      var nextType = 'Personal';
+    }else if(this.activeType == 'Personal'){
+      var nextType = 'All';
+    }
+    this.getTodosByType(nextType);
+
+  }
   getTodosByType(type: string) {
     this.activeType = type;
     this.todo = this.todoservice.getToDoByType(type);
   }
-
+  onDelete(id){
+    this.todoservice.removeCheckListItem(id);
+    this.getTodosByType(this.activeType);
+   }
+  onCompleted(id: number){
+    this.todoservice.completeCheckListItem(id);
+    this.todo = this.todoservice.getToDoByType(this.activeType);
+   }
+  onChangeImportance(event: any) {
+    this.todoservice.changeImportance(event[0], event[1]);
+    this.todo = this.todoservice.getToDoByType(this.activeType);
+  }
   loadAllTodos() {
     this.todo = this.todoservice.getAllItems();
     this.activeType = 'All';

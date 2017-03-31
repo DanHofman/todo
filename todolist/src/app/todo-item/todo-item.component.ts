@@ -22,7 +22,7 @@ import { TodoService } from '../todo.service';
       ),
       transition(':enter', [style({ background: '#1546FF'}),animate('2000ms')]),
       transition(':leave', animate('500ms', style({ background: "red"}))),
-      transition('unhighlighted <=> highlighted', animate('100ms'))
+      transition('unhighlighted <=> highlighted', animate('500ms'))
   ])
   ]
 })

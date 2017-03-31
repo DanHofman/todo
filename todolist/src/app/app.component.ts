@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, AfterContentInit  } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { TodoService } from './todo.service';
@@ -39,7 +39,9 @@ export class AppComponent implements OnInit {
       importance: new FormControl('high'),
       type: new FormControl('Projects')
     });
-    
+  }
+  ngAfterContentInit() {
+    this.todo = this.todoservice.getToDoByType('All');
   }
 
     // this.todoservice.addCheckListItem(new Checklistitem("this is completed", "soon", "non", 0))
@@ -101,7 +103,11 @@ export class AppComponent implements OnInit {
   }
   onDelete(id){
     this.todoservice.removeCheckListItem(id);
-    this.getTodosByType(this.activeType);
+    this.todo.splice(id, 1);
+    for(var to in this.todo){
+      this.todo[to].id = parseInt(to);
+    }
+    // this.getTodosByType(this.activeType);
    }
   onCompleted(id: number){
     this.todoservice.completeCheckListItem(id);

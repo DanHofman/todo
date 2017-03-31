@@ -8,9 +8,11 @@
     font-size: 20px;
     overflow: auto;
     margin-top: 1%;
+    z-index: 0;
+    position: relative;
 }
 .checkboxes:hover .nonimportance {
-    color: white;
+    color: black;
 }
 #checkbox-label {
     margin: 0px;
@@ -56,17 +58,11 @@
     border-radius: 5px;
     color: white;
 }
-.mediumimportance:hover{
-    color: white;
-}
 .mehimportance {
     background-color: transparent;
     border-radius: 5px;
     color: black;
     padding: 10px;
-}
-.mehimportance:hover {
-    color: white;
 }
 .todo-item {
     display:inline-block;
@@ -74,9 +70,6 @@
 .nonimportance {
     opacity: 0.25;
     padding: 3px;
-}
-.nonimportance:hover {
-    color: white;
 }
 .completed-task {
     color: darkgreen;

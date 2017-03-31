@@ -12,17 +12,21 @@ import { TodoService } from '../todo.service';
     trigger('todoStatus', [
       state('highlighted', style({
         // background: '#5E5E5C',
-        background: '#2AE000',
-        border: '1px solid #302EA3',
+        background: '#ECF2ED',
+        transform: 'scale(1.2)',
+        'z-index': '1'
       })),
       state('unhighlighted', style({
         background: '#DADAD5',
-        border: '0px'
-      })
+        border: '0px',
+        transform: 'scale(1)',
+        'z-index': '0'
+        })
       ),
-      transition(':enter', [style({ background: '#1546FF'}),animate('2000ms')]),
-      transition(':leave', animate('500ms', style({ background: "red"}))),
-      transition('unhighlighted <=> highlighted', animate('500ms'))
+      transition(':enter', [
+        style({ background: '#1546FF', transform: 'scale(1.2)'}),animate('750ms')]),
+      transition('* => void', animate('1500ms', style({ background: "red"}))),
+      transition('unhighlighted <=> highlighted', animate('500ms ease-out'))
   ])
   ]
 })

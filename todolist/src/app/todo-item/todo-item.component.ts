@@ -13,7 +13,7 @@ import { TodoService } from '../todo.service';
       state('highlighted', style({
         // background: '#5E5E5C',
         background: '#ECF2ED',
-        transform: 'scale(1.2)',
+        transform: 'scale(1.05)',
         'z-index': '1'
       })),
       state('unhighlighted', style({
@@ -24,9 +24,9 @@ import { TodoService } from '../todo.service';
         })
       ),
       transition(':enter', [
-        style({ background: '#1546FF', transform: 'scale(1.2)'}),animate('750ms')]),
+        style({ background: '#1546FF', transform: 'scale(1.05)'}),animate('500ms')]),
       transition('* => void', animate('1500ms', style({ background: "red"}))),
-      transition('unhighlighted <=> highlighted', animate('500ms ease-out'))
+      transition('unhighlighted <=> highlighted', animate('200ms ease-out'))
   ])
   ]
 })
@@ -49,5 +49,6 @@ export class TodoItemComponent {
   }
   onCompleted(id: number) {
     this.complete.emit(id);
+    this.todoStatus = 'unhighlighted';
   }
 }

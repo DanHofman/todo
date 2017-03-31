@@ -19,7 +19,7 @@
           <div *ngIf="todoItem.importance == 'non'" class="todo-item nonimportance"><p>{{todoItem.name}} </p></div><span *ngIf="todoItem.importance == 'non'" class="completed-task"> Completed!</span>
       </div>
     </label>
-    <button class="btn btn-warning chkbx" (click)="onDelete(todoItem.id)"  ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> 
-    <button *ngIf="todoItem.importance != 'non'" class="btn btn-info chkbx" (click)="onCompleted(todoItem.id)" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+    <button class="btn btn-warning chkbx" (click)="onDelete(todoItem.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> 
+    <button *ngIf="todoItem.importance != 'non'" class="btn btn-info chkbx" (click)="onCompleted(todoItem.id)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
     <button *ngIf="todoItem.importance == 'non'" class="btn btn-info chkbx" disabled="true" (click)="onCompleted(todoItem.id)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>       
 </div>

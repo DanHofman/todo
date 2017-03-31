@@ -103,11 +103,11 @@ export class AppComponent implements OnInit {
   }
   onDelete(id){
     this.todoservice.removeCheckListItem(id);
-    this.todo.splice(id, 1);
+    this.getTodosByType(this.activeType);
     for(var to in this.todo){
       this.todo[to].id = parseInt(to);
     }
-    // this.getTodosByType(this.activeType);
+    this.getTodosByType(this.activeType);
    }
   onCompleted(id: number){
     this.todoservice.completeCheckListItem(id);

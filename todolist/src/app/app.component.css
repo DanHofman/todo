@@ -11,7 +11,7 @@
 }
 .hider {
     margin-top: 0px;
-    display: block;
+    display: inline-block;
     margin-left: 3px;
     background-color: transparent;
     color: darkgreen;
@@ -26,7 +26,7 @@
     float: right;
 }
 .main {
-    margin: 1% 20% 5% 20%;
+    margin: 0 20% 5% 20%;
     padding: 1% 4% 3% 5%;
     box-shadow: 2px 2px 2px grey;
     /*border-radius: 5%;*/

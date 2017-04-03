@@ -4,6 +4,7 @@ export class Checklistitem {
     public type: string;
     public importance: string;
     public id: number;
+    public completedDate = "";
     constructor(name: string, time: string, importance: string, id: number ) {
         this.name = name;
         this.time = time;

@@ -22,10 +22,12 @@ export class TodoService {
   }
   changeImportance(id: number, importance: string){
     this.todos[id].importance = importance;
+    this.todos[id].completedDate = "";
     this.reOrderTodosAfterSort();
   }
   completeCheckListItem(id: number) {
     this.todos[id].importance = "non";
+    this.todos[id].completedDate = new Date().toLocaleString();
     this.reOrderTodosAfterSort();
   }
   getAllItems() {

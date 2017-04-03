@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, trigger, state, style, HostListener, transition, animate } from '@angular/core';
+import { Component, OnInit, AfterContentInit, Input, Output, EventEmitter, trigger, state, style, HostListener, transition, animate } from '@angular/core';
 
 import { Checklistitem } from '../checklistitem';
 
@@ -37,7 +37,7 @@ export class TodoItemComponent {
   @Output() complete = new EventEmitter();
   @Output() changeImport = new EventEmitter();
   todoStatus: string = 'unhighlighted';
-  
+
   toggleHighlighted(highlighted: boolean){
     this.todoStatus = highlighted ? 'highlighted' : 'unhighlighted';
   }

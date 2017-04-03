@@ -16,7 +16,7 @@
           <p *ngIf="todoItem.importance == 'medium'" class="todo-item mediumimportance">{{todoItem.name}} should be done {{todoItem.time}}</p>
           <p *ngIf="todoItem.importance == 'meh'" class="todo-item mehimportance">{{todoItem.name}} should be done {{todoItem.time}}</p>     
           <span *ngIf="todoItem.importance == 'non'" class="glyphicon glyphicon-ok completed-check" aria-hidden="true"></span>                 
-          <div *ngIf="todoItem.importance == 'non'" class="todo-item nonimportance"><p>{{todoItem.name}} </p></div><span *ngIf="todoItem.importance == 'non'" class="completed-task"> Completed!</span>
+          <div *ngIf="todoItem.importance == 'non'" class="todo-item nonimportance"><p>{{todoItem.name}} </p></div><span *ngIf="todoItem.importance == 'non'" class="completed-task"> Completed! {{todoItem.completedDate}}</span>
       </div>
     </label>
     <button class="btn btn-warning chkbx" (click)="onDelete(todoItem.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> 

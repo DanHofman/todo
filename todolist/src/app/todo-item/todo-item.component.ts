@@ -13,7 +13,7 @@ import { TodoService } from '../todo.service';
       state('highlighted', style({
         // background: '#5E5E5C',
         background: '#ECF2ED',
-        transform: 'scale(1.05)',
+        transform: 'scale(1.05) translateX(20px)',
         'z-index': '1'
       })),
       state('unhighlighted', style({
@@ -23,9 +23,9 @@ import { TodoService } from '../todo.service';
         'z-index': '0'
         })
       ),
-      transition(':enter', [
-        style({ background: '#1546FF', transform: 'scale(1.05)'}),animate('500ms')]),
       transition('* => void', animate('1500ms', style({ background: "red"}))),
+      transition(':enter', [
+        style({ transform: 'scale(0.85)'}),animate('250ms')]),  
       transition('unhighlighted <=> highlighted', animate('200ms ease-out'))
   ])
   ]

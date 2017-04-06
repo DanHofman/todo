@@ -9,6 +9,9 @@
     padding: 0px;
     display: inline-block;
 }
+#change-importance-header {
+    font-weight: bolder;
+}
 .hider {
     margin-top: 0px;
     display: inline-block;
@@ -59,7 +62,7 @@
     display: inline-block;
 }
 #beige-block {
-    background-color: beige;
+    background-color: #96C0C6;
     width: 10px;
     height: 10px;
     display: inline-block;
